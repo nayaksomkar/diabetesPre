@@ -64,6 +64,6 @@ Edit `src/config.py` to change:
 - Trained model: `models/diabetesModel.pkl`
 - Confusion matrix: `images/confusionMatrix.png`
 
-
+## Github & HuggingFace
 - GithubRepo : https://github.com/nayaksomkar/diabetesPre
 - HuggingFace : https://huggingface.co/nayaksomkar/DiabetesPre
