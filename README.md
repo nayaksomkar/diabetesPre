@@ -1,74 +1,33 @@
-# Diabetes Prediction System 🩺
+# Diabetes Prediction 🩺
 
-> Predict 13 types of diabetes from clinical data using Machine Learning
-
-![Python](https://img.shields.io/badge/Python-3.10+-blue)
-![scikit-learn](https://img.shields.io/badge/scikit-learn-1.3+-orange)
-![Random Forest](https://img.shields.io/badge/Random-Forest-green)
-
-A machine learning project to classify diabetes types from clinical data using Random Forest classifier.
+Predicts 13 types of diabetes from clinical data using Random Forest.
 
 ---
 
-## Features
-
-- ✅ Data preprocessing (missing values, encoding)
-- ✅ Random Forest classifier
-- ✅ Model persistence (pickle)
-- ✅ Confusion matrix visualization
-- ✅ Model testing with 100 random samples
-- ✅ Performance metrics (accuracy, precision, recall, F1)
-- ✅ JSON test logs
-
----
-
-## Quick Start
+## Run
 
 ```bash
-# Train the model
-cd src
-python main.py
-
-# Test the model with 100 random samples
-python run_test.py
+python src/main.py        # Train model
+python src/run_test.py    # Test with 100 samples
 ```
 
 ---
 
-## Test Results
+## Results
 
-| Metric | Value |
-|--------|-------|
-| **Samples Tested** | 100 |
-| **Accuracy** | 90.00% |
-| **Correct Predictions** | 90/100 |
-| **Precision (Macro)** | 0.911 |
-| **Recall (Macro)** | 0.907 |
-| **F1 Score (Macro)** | 0.900 |
-
----
-
-## Visualizations
-
-### Test Accuracy Metrics
-![Accuracy](images/test_accuracy_metrics.png)
-
-*Overall model performance*
+**Accuracy: 90%** | Precision: 0.91 | Recall: 0.91 | F1: 0.90
 
 ### Test Confusion Matrix
 ![Confusion Matrix](images/test_confusion_matrix.png)
 
-*Predictions across 13 diabetes types*
+### Accuracy Metrics
+![Accuracy](images/test_accuracy_metrics.png)
 
 ### Per-Class Performance
 ![Metrics](images/test_metrics_comparison.png)
 
-*Precision, Recall, F1 per class*
-
-### Training Confusion Matrix
+### Training Results
 ![Training](images/confusionMatrix.png)
-
-*Full training dataset results*
 
 ---
 
@@ -81,19 +40,18 @@ diabetesPre/
 ├── images/                         # Visualizations
 ├── test_logs.json                  # Test results
 └── src/
+    ├── main.py                     # Train
+    ├── run_test.py                 # Test
     ├── config.py                   # Settings
-    ├── main.py                     # Training
     ├── MLtrain.py                  # Model
     ├── proData.py                  # Data processing
-    ├── run_test.py                 # Testing
-    ├── test_data.py                # Test data loader
+    ├── test_data.py                # Test loader
     ├── test_testing.py             # Test functions
-    └── test_plots.py               # Visualizations
+    └── test_plots.py               # Charts
 ```
 
 ---
 
-## GitHub & HuggingFace
+## Links
 
-- [GitHub](https://github.com/nayaksomkar/diabetesPre)
-- [HuggingFace](https://huggingface.co/nayaksomkar/DiabetesPre)
+[GitHub](https://github.com/nayaksomkar/diabetesPre) | [HuggingFace](https://huggingface.co/nayaksomkar/DiabetesPre)
