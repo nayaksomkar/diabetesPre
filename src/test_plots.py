@@ -12,7 +12,7 @@ from sklearn.metrics import (
     f1_score,
     classification_report,
 )
-from config import FIGURE_SIZE, FIGURE_DPI
+from config import FIGURE_SIZE, FIGURE_DPI, CONFUSION_MATRIX_LABELS
 
 
 def plot_accuracy_metrics(metrics: dict, save_path: str = "accuracy_metrics.png"):
@@ -69,7 +69,10 @@ def plot_accuracy_metrics(metrics: dict, save_path: str = "accuracy_metrics.png"
 
 
 def plot_confusion_matrix(
-    y_true: np.ndarray, y_pred: np.ndarray, save_path: str = "test_confusion_matrix.png"
+    y_true: np.ndarray,
+    y_pred: np.ndarray,
+    save_path: str = "test_confusion_matrix.png",
+    label_names: list = None,
 ):
     """
     Plot confusion matrix heatmap.
@@ -78,24 +81,26 @@ def plot_confusion_matrix(
         y_true: True labels.
         y_pred: Predicted labels.
         save_path: Path to save the plot.
+        label_names: List of class names for labeling.
     """
     cm = confusion_matrix(y_true, y_pred)
     n_classes = cm.shape[0]
 
-    fig, ax = plt.subplots(figsize=(12, 10))
+    fig, ax = plt.subplots(figsize=(14, 12))
     im = ax.imshow(cm, interpolation="nearest", cmap="Blues")
     ax.figure.colorbar(im, ax=ax)
 
-    unique_labels = np.unique(np.concatenate([y_true, y_pred]))
-    label_names = [f"Class {i}" for i in range(n_classes)]
+    if label_names is None:
+        label_names = CONFUSION_MATRIX_LABELS
 
     ax.set(
         xticks=np.arange(n_classes),
         yticks=np.arange(n_classes),
-        xticklabels=label_names,
-        yticklabels=label_names,
+        xticklabels=label_names[:n_classes],
+        yticklabels=label_names[:n_classes],
     )
-    plt.setp(ax.get_xticklabels(), rotation=45, ha="right")
+    plt.setp(ax.get_xticklabels(), rotation=45, ha="right", fontsize=8)
+    plt.setp(ax.get_yticklabels(), fontsize=8)
 
     thresh = cm.max() / 2.0
     for i in range(cm.shape[0]):
@@ -107,6 +112,7 @@ def plot_confusion_matrix(
                 ha="center",
                 va="center",
                 color="white" if cm[i, j] > thresh else "black",
+                fontsize=10,
             )
 
     plt.xlabel("Predicted Label", fontsize=12)
@@ -119,7 +125,10 @@ def plot_confusion_matrix(
 
 
 def plot_metrics_comparison(
-    y_true: np.ndarray, y_pred: np.ndarray, save_path: str = "metrics_comparison.png"
+    y_true: np.ndarray,
+    y_pred: np.ndarray,
+    save_path: str = "metrics_comparison.png",
+    label_names: list = None,
 ):
     """
     Plot precision, recall, and F1 scores per class.
@@ -128,6 +137,7 @@ def plot_metrics_comparison(
         y_true: True labels.
         y_pred: Predicted labels.
         save_path: Path to save the plot.
+        label_names: List of class names for labeling.
     """
     unique_labels = np.unique(y_true)
     n_classes = len(unique_labels)
@@ -145,7 +155,10 @@ def plot_metrics_comparison(
         )
         f1_per_class.append(f1_score(y_true, y_pred, labels=[i], average="micro", zero_division=0))
 
-    class_labels = [f"Class {i}" for i in range(n_classes)]
+    if label_names is None:
+        class_labels = [f"Class {i}" for i in range(n_classes)]
+    else:
+        class_labels = label_names[:n_classes]
 
     x = np.arange(n_classes)
     width = 0.25
@@ -158,7 +171,7 @@ def plot_metrics_comparison(
     ax.set_ylabel("Score", fontsize=12)
     ax.set_title("Per-Class Performance Metrics (100 Test Samples)", fontsize=14, fontweight="bold")
     ax.set_xticks(x)
-    ax.set_xticklabels(class_labels, rotation=45, ha="right")
+    ax.set_xticklabels(class_labels, rotation=45, ha="right", fontsize=9)
     ax.legend()
     ax.set_ylim(0, 1.1)
     ax.axhline(y=0.85, color="red", linestyle="--", alpha=0.7, label="Threshold")

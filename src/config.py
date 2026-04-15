@@ -103,18 +103,19 @@ SCALING_METHOD: str | None = None
 
 # Confusion matrix display labels
 CONFUSION_MATRIX_LABELS: list[str] = [
-    "Steroid-Induced Diabetes",
-    "Neonatal Diabetes Mellitus",
+    "Cystic Fibrosis-Related Diabetes (CFRD)",
+    "Gestational Diabetes",
+    "LADA",
+    "MODY",
+    "Neonatal Diabetes Mellitus (NDM)",
     "Prediabetic",
+    "Secondary Diabetes",
+    "Steroid-Induced Diabetes",
     "Type 1 Diabetes",
     "Type 2 Diabetes",
+    "Type 3c Diabetes (Pancreatogenic Diabetes)",
+    "Wolcott-Rallison Syndrome",
     "Wolfram Syndrome",
-    "Gestational Diabetes",
-    "MODY (Maturity Onset Diabetes of the Young)",
-    "LADA (Latent Autoimmune Diabetes in Adults)",
-    "Type 3 Diabetes",
-    "Secondary Diabetes",
-    "Chemical-Induced Diabetes",
 ]
 
 # Figure size for plots (width, height)

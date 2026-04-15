@@ -108,12 +108,21 @@ def run_model_tests(n_samples: int = 100, random_state: int = 42):
     )
 
     print("[STEP 5/6] Generating performance graphs...")
+    target_names = (
+        sorted(y_test.unique().tolist()) if hasattr(y_test, "unique") else list(set(y_test))
+    )
     plot_accuracy_metrics(metrics, "images/test_accuracy_metrics.png")
     plot_confusion_matrix(
-        metrics["true_labels"], metrics["predictions"], "images/test_confusion_matrix.png"
+        metrics["true_labels"],
+        metrics["predictions"],
+        "images/test_confusion_matrix.png",
+        label_names=target_names,
     )
     plot_metrics_comparison(
-        metrics["true_labels"], metrics["predictions"], "images/test_metrics_comparison.png"
+        metrics["true_labels"],
+        metrics["predictions"],
+        "images/test_metrics_comparison.png",
+        label_names=target_names,
     )
 
     print("[STEP 6/6] Saving test logs...")
