@@ -65,5 +65,5 @@ Edit `src/config.py` to change:
 - Confusion matrix: `images/confusionMatrix.png`
 
 
-GithubRepo : https://github.com/nayaksomkar/diabetesPre
-HuggingFace : https://huggingface.co/nayaksomkar/DiabetesPre
+- GithubRepo : https://github.com/nayaksomkar/diabetesPre
+- HuggingFace : https://huggingface.co/nayaksomkar/DiabetesPre
