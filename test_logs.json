@@ -1,0 +1,32 @@
+{
+    "test_info": {
+        "n_samples_tested": 100,
+        "model_type": "RandomForestClassifier",
+        "model_params": {
+            "n_estimators": 100,
+            "criterion": "gini",
+            "max_depth": null,
+            "min_samples_split": 2,
+            "min_samples_leaf": 1,
+            "max_features": "sqrt",
+            "bootstrap": true,
+            "oob_score": false,
+            "random_state": 42,
+            "n_jobs": -1
+        }
+    },
+    "metrics": {
+        "accuracy": 0.9,
+        "precision_macro": 0.9110056610056609,
+        "recall_macro": 0.9073426573426573,
+        "f1_macro": 0.8996153643926923,
+        "precision_weighted": 0.9177056277056276,
+        "recall_weighted": 0.9,
+        "f1_weighted": 0.8996083916083916
+    },
+    "summary": {
+        "accuracy_percentage": "90.00%",
+        "total_correct": 90,
+        "total_incorrect": 9
+    }
+}
