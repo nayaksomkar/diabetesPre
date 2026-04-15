@@ -1,10 +1,64 @@
 [project]
-name = "diabetespre"
-version = "0.1.0"
-description = "Add your description here"
+name = "diabetes-prediction"
+version = "1.0.0"
+description = "Production-grade machine learning system for predicting diabetes types"
 readme = "README.md"
-requires-python = ">=3.11"
-dependencies = [
-    "ipykernel>=6.30.0",
-    "pandas>=2.3.1",
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Development Team" }
 ]
+keywords = ["machine-learning", "diabetes", "classification", "random-forest", "healthcare"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Healthcare Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+]
+dependencies = [
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "scikit-learn>=1.3.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+    "jupyter>=1.0.0",
+]
+
+[project.scripts]
+diabetes-predict = "src.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
